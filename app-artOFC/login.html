@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio de Sesión</title>
+  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="login-container">
+    <h1 class="login-title">BIENVENIDO</h1>
+    <form class="login-form" action="login.php" method="POST">
+      <label class="login-label">Usuario</label>
+      <input type="text" class="login-input" name="usuario" placeholder="Ingresa tu usuario" required>
+
+      <label class="login-label">Contraseña</label>
+      <input type="password" class="login-input" name="contrasena" placeholder="Ingresa tu contraseña" required>
+
+      <button type="submit" class="login-button">Entrar</button>
+      <p class="register-text">
+        ¿No tienes una cuenta? <a href="registro.html" class="register-link">Regístrate</a>
+      </p>
+    </form>
+  </div>
+</body>
+</html>

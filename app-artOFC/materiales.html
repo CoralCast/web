@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="arte.css" rel="stylesheet">
+    <title>Arte</title>
+</head>
+<body>
+    <header>
+        <h1>TIENDA DE MATERIALES</h1>
+    </header>
+    <section class="contenedor">
+        <div class="contenedor-items">
+            <div class="item">
+                <span class="titulo-arte">Paquete pinceles</span> 
+                <img src="https://i.pinimg.com/736x/60/47/dc/6047dc3692b07eae00d74cd37842ecbc.jpg" alt="Pintura 1" class="img-arte">
+                <p class="descripcion-arte">Pinceles nuevos</p>
+                <span class="precio-arte">$70.00</span>
+                <button class="boton-arte">Agregar al carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-arte">Kit de arte</span> 
+                <img src="https://i.pinimg.com/736x/f6/f8/94/f6f894502ae3d1e009e959c384739d6e.jpg" alt="Pintura 1" class="img-arte">
+                <p class="descripcion-arte">Kit de arte completo:
+
+                </p>
+                <span class="precio-arte">$577.00</span>
+                <button class="boton-arte">Agregar al carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-arte">Lapices de dibujos</span> 
+                <img src="https://i.pinimg.com/736x/ba/74/d5/ba74d590d09370b8dc7c5fabd38ed716.jpg" alt="Pintura 1" class="img-arte">
+                <p class="descripcion-arte">Lapices nuevos</p>
+                <span class="precio-arte">$180.00</span>
+                <button class="boton-arte">Agregar al carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-arte">Acuarelas</span> 
+                <img src="https://i.pinimg.com/736x/09/ad/56/09ad56752abd5bcce674cf9c72892237.jpg" alt="Pintura 1" class="img-arte">
+                <p class="descripcion-arte">Acuarelas de marca</p>
+                <span class="precio-arte">$210.00</span>
+                <button class="boton-arte">Agregar al carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-arte">Pintura acrilica</span> 
+                <img src="https://i.pinimg.com/736x/3f/61/05/3f6105c172237ff7fc6fa9cdb8b57bd9.jpg" alt="Pintura 1" class="img-arte">
+                <p class="descripcion-arte">Pintura acrilica</p>
+                <span class="precio-arte">180.00</span>
+                <button class="boton-arte">Agregar al carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-arte">Paiting set</span> 
+                <img src="https://i.pinimg.com/736x/1a/75/8d/1a758d418f80ff48fb30eebb2ea42e41.jpg" alt="Pintura 1" class="img-arte">
+                <p class="descripcion-arte">Set completo de pinturas</p>
+                <span class="precio-arte">$347.00</span>
+                <button class="boton-arte">Agregar al carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-arte">Libreta dibujo</span> 
+                <img src="https://i.pinimg.com/736x/c7/21/1b/c7211b675721c76328ba4533919bc9b7.jpg" alt="Pintura 1" class="img-arte">
+                <p class="descripcion-arte">Cuaderno para dibujar</p>
+                <span class="precio-arte">$210.00</span>
+                <button class="boton-arte">Agregar al carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-arte">Pintura acrilica</span> 
+                <img src="https://i.pinimg.com/736x/2b/16/5c/2b165cfb35b299106662fd1954594047.jpg" alt="Pintura 1" class="img-arte">
+                <p class="descripcion-arte">Pintura acrilica color pastelr</p>
+                <span class="precio-arte">$210.00</span>
+                <button class="boton-arte">Agregar al carrito</button>
+            </div>
+            
+            
+        </div>
+
+ <!-- Carrito de compras -->
+<div class="carrito">
+    <div class="header-carrito">
+        <h2>Carrito de compras</h2>
+    </div>
+    
+    <div class="carrito-items">
+        <!-- Aquí se añadirán los productos del carrito -->
+    </div>
+
+    <div class="carrito-total">
+        <span>Total: </span>
+        <span id="total-precio">$0.00</span>
+    </div>
+
+    <!-- Mensaje de confirmación -->
+    <div id="mensaje-confirmacion" style="display: none; color: green; margin-top: 10px;"></div>
+
+    <!-- Formulario oculto para enviar el total y el carrito a PHP -->
+    <form id="form-pagar" method="POST">
+        <input type="hidden" name="carrito" id="input-carrito">
+        <input type="hidden" name="monto_total" id="monto_total">
+        <button type="button" id="boton-pagar" class="boton-pagar">Pagar</button>
+    </form>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const botonesAgregar = document.querySelectorAll(".boton-arte");
+        const carritoItems = document.querySelector(".carrito-items");
+        const totalPrecio = document.getElementById("total-precio");
+        const botonPagar = document.getElementById("boton-pagar");
+        const inputCarrito = document.getElementById("input-carrito");
+        const inputMontoTotal = document.getElementById("monto_total");
+        const mensajeConfirmacion = document.getElementById("mensaje-confirmacion");
+
+        let carrito = [];
+        let total = 0;
+
+        botonesAgregar.forEach((boton) => {
+            boton.addEventListener("click", () => {
+                const item = boton.parentElement;
+                const titulo = item.querySelector(".titulo-arte").innerText;
+                const precioText = item.querySelector(".precio-arte").innerText;
+                const precio = parseFloat(precioText.replace("$", "").replace(",", ""));
+
+                agregarAlCarrito(titulo, precio);
+                actualizarCarrito();
+                actualizarTotal();
+            });
+        });
+
+        function agregarAlCarrito(titulo, precio) {
+            const productoExistente = carrito.find((producto) => producto.titulo === titulo);
+
+            if (productoExistente) {
+                productoExistente.cantidad += 1;
+            } else {
+                carrito.push({ titulo, precio, cantidad: 1 });
+            }
+        }
+
+        function actualizarCarrito() {
+            carritoItems.innerHTML = "";
+            carrito.forEach((producto) => {
+                const itemCarrito = document.createElement("div");
+                itemCarrito.classList.add("carrito-item");
+                itemCarrito.innerHTML = `
+                    <span>${producto.titulo} (x${producto.cantidad})</span>
+                    <span>$${(producto.precio * producto.cantidad).toFixed(2)}</span>
+                `;
+                carritoItems.appendChild(itemCarrito);
+            });
+        }
+
+        function actualizarTotal() {
+            total = carrito.reduce((sum, producto) => sum + producto.precio * producto.cantidad, 0);
+            totalPrecio.innerText = `$${total.toFixed(2)}`;
+        }
+
+        botonPagar.addEventListener("click", () => {
+            if (carrito.length === 0) {
+                alert("El carrito está vacío. Agrega productos antes de pagar.");
+                return;
+            }
+
+            const confirmacion = confirm(`El total a pagar es ${totalPrecio.innerText}. ¿Deseas continuar con el pago?`);
+            
+            if (confirmacion) {
+                // Convertir carrito a JSON y enviarlo al formulario oculto
+                inputCarrito.value = JSON.stringify(carrito);
+                inputMontoTotal.value = total.toFixed(2);
+
+                // Enviar datos con AJAX
+                fetch('procesar_compra.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: `carrito=${encodeURIComponent(inputCarrito.value)}&monto_total=${encodeURIComponent(inputMontoTotal.value)}`
+                })
+                .then(response => response.text())
+                .then(data => {
+                    // Mostrar mensaje de confirmación
+                    mensajeConfirmacion.style.display = 'block';
+                    mensajeConfirmacion.innerText = data;
+
+                    // Reiniciar el carrito y el total después de la compra
+                    carrito = [];
+                    actualizarCarrito();
+                    actualizarTotal();
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        });
+    });
+</script>
+

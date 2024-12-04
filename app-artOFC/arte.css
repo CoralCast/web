@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('yes.png'); 
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-position: center; 
+    min-height: 100vh; 
+    margin: 0;
+}
+
+header h1 {
+    text-align: center;
+    font-size: 35px;
+    color: white;
+    padding: 30px 0;
+}
+
+.contenedor {
+    max-width: 1200px;
+    padding: 10px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Reducir el tamaño mínimo */
+    gap: 15px; /* Reducir espacio entre tarjetas */
+    width: 100%;
+}
+
+.item {
+    background-color: #fff;
+    padding: 15px; /* Reducir padding interno */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.item:hover {
+    transform: scale(1.05);
+}
+
+.titulo-arte {
+    font-size: 16px; /* Reducir tamaño de fuente */
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.img-arte {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Reducir margen inferior */
+}
+
+.descripcion-arte {
+    font-size: 12px; /* Reducir tamaño de fuente */
+    color: #666;
+    margin-bottom: 8px; /* Reducir margen inferior */
+}
+
+.precio-arte {
+    font-size: 14px; /* Reducir tamaño de fuente */
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px; /* Reducir margen inferior */
+    display: block;
+}
+
+.boton-arte {
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 15px; /* Reducir padding del botón */
+    font-size: 12px; /* Reducir tamaño de fuente del botón */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.boton-arte:hover {
+    background-color: #0056b3;
+}
+.carrito {
+    background-color: #7b85f1;
+    margin-left: 30px;
+    height: 500px;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 90px;
+}
+
+.header-carrito h2 {
+    margin-bottom: 10px;
+}
+
+.carrito-items {
+    margin-bottom: 15px;
+}
+
+.carrito-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.carrito-total {
+    font-weight: bold;
+}
+.boton-pagar {
+    background-color: #7833ad;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.boton-pagar:hover {
+    background-color: #7974e2;
+}

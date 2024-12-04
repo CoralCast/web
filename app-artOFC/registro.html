@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro</title>
+  <link rel="stylesheet" href="registro.css">
+</head>
+<body>
+  <div class="register-container">
+    <h1 class="register-title">CREA UNA NUEVA CUENTA</h1>
+  
+    <form class="register-form" action="registro.php" method="POST">
+      <div class="form-group">
+        <input type="text" class="register-input" name="nombre_completo" placeholder="NOMBRE COMPLETO" required>
+        <input type="email" class="register-input" name="correo" placeholder="CORREO ELECTRONICO" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="register-input" name="usuario" placeholder="USUARIO" required>
+        <input type="password" class="register-input" name="contrasena" placeholder="CONTRASENA" required>
+      </div>
+      
+      <button type="submit" class="register-button">Registrarse</button>
+    </form>
+    
+  </div>
+</body>
+</html>

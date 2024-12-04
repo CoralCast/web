@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="arte.css" rel="stylesheet">
+    <title>Arte</title>
+</head>
+<body>
+    <header>
+        <h1>TIENDA DE ARTE</h1>
+    </header>
+    <section class="contenedor">
+        <div class="contenedor-items">
+            <div class="item">
+                <span class="titulo-arte">Cielo azulado</span> 
+                <img src="https://i.pinimg.com/736x/a9/56/75/a9567599aab95230e84ddc297e3f6349.jpg" alt="Pintura 1" class="img-arte">
+                <p class="descripcion-arte">Pintura óleo</p>
+                <span class="precio-arte">$390.00</span>
+                <button class="boton-arte">Agregar al carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-arte">Snoopy Estrellado</span> 
+                <img src="https://i.pinimg.com/564x/52/72/d1/5272d1a985895e0ba89e13a394021eff.jpg" alt="Pintura 1" class="img-arte">
+                <p class="descripcion-arte">Pintura óleo</p>
+                <span class="precio-arte">$577.00</span>
+                <button class="boton-arte">Agregar al carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-arte">Studio Ghibli</span> 
+                <img src="https://i.pinimg.com/736x/9a/ca/7d/9aca7d9e7dbcf6fef3308112a91f2c76.jpg" alt="Pintura 1" class="img-arte">
+                <p class="descripcion-arte">Pintura óleo</p>
+                <span class="precio-arte">$347.00</span>
+                <button class="boton-arte">Agregar al carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-arte">Gato</span> 
+                <img src="https://i.pinimg.com/736x/16/98/38/1698383aa7360cdda903bcf91cd48a13.jpg" alt="Pintura 1" class="img-arte">
+                <p class="descripcion-arte">Pintura óleo</p>
+                <span class="precio-arte">$140.00</span>
+                <button class="boton-arte">Agregar al carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-arte">Ponyo</span> 
+                <img src="https://i.pinimg.com/736x/f0/5a/13/f05a13278834110dd1d50660d589dc57.jpg" alt="Pintura 1" class="img-arte">
+                <p class="descripcion-arte">Pintura óleo</p>
+                <span class="precio-arte">$390.00</span>
+                <button class="boton-arte">Agregar al carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-arte">Cenicero</span> 
+                <img src="https://i.pinimg.com/736x/57/a6/37/57a6378b44118af16fc2ede5dda760a4.jpg" alt="Pintura 1" class="img-arte">
+                <p class="descripcion-arte">Arcilla</p>
+                <span class="precio-arte">$90.00</span>
+                <button class="boton-arte">Agregar al carrito</button>
+            </div>
+            
+        </div>
+
+ <!-- Carrito de compras -->
+<div class="carrito">
+    <div class="header-carrito">
+        <h2>Carrito de compras</h2>
+    </div>
+    
+    <div class="carrito-items">
+        <!-- Aquí se añadirán los productos del carrito -->
+    </div>
+
+    <div class="carrito-total">
+        <span>Total: </span>
+        <span id="total-precio">$0.00</span>
+    </div>
+
+    <!-- Mensaje de confirmación -->
+    <div id="mensaje-confirmacion" style="display: none; color: green; margin-top: 10px;"></div>
+
+    <!-- Formulario oculto para enviar el total y el carrito a PHP -->
+    <form id="form-pagar" method="POST">
+        <input type="hidden" name="carrito" id="input-carrito">
+        <input type="hidden" name="monto_total" id="monto_total">
+        <button type="button" id="boton-pagar" class="boton-pagar">Pagar</button>
+    </form>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const botonesAgregar = document.querySelectorAll(".boton-arte");
+        const carritoItems = document.querySelector(".carrito-items");
+        const totalPrecio = document.getElementById("total-precio");
+        const botonPagar = document.getElementById("boton-pagar");
+        const inputCarrito = document.getElementById("input-carrito");
+        const inputMontoTotal = document.getElementById("monto_total");
+        const mensajeConfirmacion = document.getElementById("mensaje-confirmacion");
+
+        let carrito = [];
+        let total = 0;
+
+        botonesAgregar.forEach((boton) => {
+            boton.addEventListener("click", () => {
+                const item = boton.parentElement;
+                const titulo = item.querySelector(".titulo-arte").innerText;
+                const precioText = item.querySelector(".precio-arte").innerText;
+                const precio = parseFloat(precioText.replace("$", "").replace(",", ""));
+
+                agregarAlCarrito(titulo, precio);
+                actualizarCarrito();
+                actualizarTotal();
+            });
+        });
+
+        function agregarAlCarrito(titulo, precio) {
+            const productoExistente = carrito.find((producto) => producto.titulo === titulo);
+
+            if (productoExistente) {
+                productoExistente.cantidad += 1;
+            } else {
+                carrito.push({ titulo, precio, cantidad: 1 });
+            }
+        }
+
+        function actualizarCarrito() {
+            carritoItems.innerHTML = "";
+            carrito.forEach((producto) => {
+                const itemCarrito = document.createElement("div");
+                itemCarrito.classList.add("carrito-item");
+                itemCarrito.innerHTML = `
+                    <span>${producto.titulo} (x${producto.cantidad})</span>
+                    <span>$${(producto.precio * producto.cantidad).toFixed(2)}</span>
+                `;
+                carritoItems.appendChild(itemCarrito);
+            });
+        }
+
+        function actualizarTotal() {
+            total = carrito.reduce((sum, producto) => sum + producto.precio * producto.cantidad, 0);
+            totalPrecio.innerText = `$${total.toFixed(2)}`;
+        }
+
+        botonPagar.addEventListener("click", () => {
+            if (carrito.length === 0) {
+                alert("El carrito está vacío. Agrega productos antes de pagar.");
+                return;
+            }
+
+            const confirmacion = confirm(`El total a pagar es ${totalPrecio.innerText}. ¿Deseas continuar con el pago?`);
+            
+            if (confirmacion) {
+                // Convertir carrito a JSON y enviarlo al formulario oculto
+                inputCarrito.value = JSON.stringify(carrito);
+                inputMontoTotal.value = total.toFixed(2);
+
+                // Enviar datos con AJAX
+                fetch('procesar_compra.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: `carrito=${encodeURIComponent(inputCarrito.value)}&monto_total=${encodeURIComponent(inputMontoTotal.value)}`
+                })
+                .then(response => response.text())
+                .then(data => {
+                    // Mostrar mensaje de confirmación
+                    mensajeConfirmacion.style.display = 'block';
+                    mensajeConfirmacion.innerText = data;
+
+                    // Reiniciar el carrito y el total después de la compra
+                    carrito = [];
+                    actualizarCarrito();
+                    actualizarTotal();
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        });
+    });
+</script>
+

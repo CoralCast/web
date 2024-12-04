@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&family=Alef:wght@400;700&family=Almarai:wght@300;400;700;800&family=Anybody:ital,wght@0,100..900;1,100..900&family=Artifika&family=Bungee+Inline&family=DynaPuff:wght@400..700&family=Lilita+One&family=Merienda:wght@300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&family=Alef:wght@400;700&family=Almarai:wght@300;400;700;800&family=Anybody:ital,wght@0,100..900;1,100..900&family=Artifika&family=Bungee+Inline&family=DynaPuff:wght@400..700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lilita+One&family=Merienda:wght@300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&family=Alef:wght@400;700&family=Almarai:wght@300;400;700;800&family=Anybody:ital,wght@0,100..900;1,100..900&family=Artifika&family=Bungee+Inline&family=Dongle&family=DynaPuff:wght@400..700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lilita+One&family=Merienda:wght@300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Marcellus&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-image: url('yes.png'); 
+  background-size: cover;
+  background-repeat: no-repeat; 
+  background-position: center; 
+  min-height: 100vh; 
+  margin: 0;
+}
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  background-color: #2e2b5b;
+  font-family: "DynaPuff", system-ui;
+  padding: 35px 0;
+  padding-top: 20px;
+  width: 100%;
+  clear: both;
+  position: fixed;
+  height: 90px;
+  top: 0; 
+  left: 0; 
+  
+  
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  color: white;
+}
+.menu a:hover {
+  background-color: rgba(37, 33, 79, 0.2);
+  border-radius: 12px;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: white; 
+  padding-bottom: 20px;
+  padding-top: 10px;
+  display: inline-block;
+  font-size: 20px;
+  transition: color 0.5s ease; 
+}
+
+.menu li a:hover {
+  color: #cecb6d; 
+}
+
+
+.bienvenida {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px;
+  color: white;
+  background-image: url('fondo.png');
+  background-size: cover;
+  background-position: center; 
+  background-repeat: no-repeat;
+  height: 75vh;
+  margin-top: 120px; 
+}
+
+
+  .texto-bienvenida {
+    margin-top: 100px;
+    max-width: 400px;
+    animation: fadeIn 2s ease-in-out;
+  }
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.texto-bienvenida h1 {
+  font-size: 50px;
+  color: white;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.texto-bienvenida {
+  margin: 25px 0;
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+  font-family: "Josefin Sans", sans-serif;
+  padding: 50px;
+
+}
+button {
+  background-color: #FFAA00;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+button:hover {
+  background-color: #E69500;
+  transform: scale(1.05);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.iconos {
+  margin-top: 20px;
+}
+
+.iconos a {
+  color: white;
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+.imagen {
+  max-width: 400px;
+}
+
+.testimonios {
+  padding: 40px 20px;
+  text-align: center;
+  margin-top: 20px;
+  display: flex; /* Hace que las tarjetas se acomoden horizontalmente */
+  justify-content: center; /* Centra las tarjetas horizontalmente */
+  gap: 20px; 
+}
+
+.testimonios h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.card {
+  background-color: #e7c65c;
+  color: #523402;
+  padding: 20px;
+  font-family: "Playfair Display", serif;
+  margin: 20px auto;
+  border-radius: 15px;
+  max-width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-style: italic;
+}
+
+.card-img {
+  width: 100px;
+  height: 100px;
+ 
+  margin-bottom: 15px;
+}
+
+.card p {
+  font-size: 1.1em;
+  margin: 10px 0;
+}
+
+.card span {
+ 
+  font-weight: bold;
+  color: #675118;
+}
+.arte-page {
+  padding: 200px;
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; 
+}
+.cartas-largas {
+
+  background-color: #464c9b;
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+
+  color: #FFFFFF;
+  transition: transform 0.3s;
+}
+
+.cartas-largas:hover {
+  transform: scale(1.05);
+}
+
+.cartas-largas h1 {
+  font-size: 24px;
+  font-family: "Marcellus", serif;
+  margin: 0 0 10px;
+}
+
+.cartas-largas .icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.cartas-largas .icons img {
+  width: 50px;
+  height: auto;
+}
